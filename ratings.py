@@ -41,11 +41,20 @@ while True:
             print("{} is rated at {}." .format(restaurant, rating))
 
     elif choice.upper() == 'U':
-        restaurants_list = list(restaurants_dict.keys())
-
-        new_rating_for_rest = random.choice(restaurants_list)
+        selection = input("Do you want to choose the restaurant to update? Y/N ")
+        
+        if selection.upper() == "Y":
+            print("Here is the list of restaurants: ")
+            for restaurant in restaurants_dict.keys():
+                print(restaurant)
+            new_rating_for_rest = input("Please enter your choice: ").title()
+        else:
+            restaurants_list = list(restaurants_dict.keys())
+            new_rating_for_rest = random.choice(restaurants_list)
+        
         print("Here is the restaurant to change the rating.")
         print(new_rating_for_rest, restaurants_dict[new_rating_for_rest])
+        
         new_rating = int(input("Please enter new rating "))
 
         while new_rating < 1 or new_rating > 5:
